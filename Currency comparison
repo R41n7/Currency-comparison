@@ -1,0 +1,51 @@
+import Country.Companion.nameCountry
+
+enum class Country(val country: String, val currency: String) {
+    GERMANY("Germany", "Euro"),
+    MALI("Mali", "CFA franc"),
+    DOMINICA("Dominica", "Eastern Caribbean dollar"),
+    CANADA("Canada", "Canadian dollar"),
+    SPAIN("Spain", "Euro"),
+    AUSTRALIA("Australia", "Australian dollar"),
+    BRAZIL("Brazil", "Brazilian real"),
+    SENEGAL("Senegal", "CFA franc"),
+    FRANCE("France", "Euro"),
+    GRENADA("Grenada", "Eastern Caribbean dollar"),
+    KIRIBATI("Kiribati", "Australian dollar"),
+    Australia("Austria", "Australian Dollar"),
+    BELARUS("Belarus", "Belarussian Ruble"),
+    LITHUANIA("Lithuania", "Euro"),
+    RUSSIA("Russia", "Russian Ruble"),
+    CZECH("Czech", "Czech Koruna"),
+    FINLAND("Finland", "Euro");
+
+    companion object {
+        val nameCountry = readLine()!!.toString().split(" ")
+        fun findCurrencyByCountry(country: List<String>): Boolean {
+            var result1 = ""
+            var result2 = ""
+            // Первая страна
+            for (testCountry in Country.values()) {
+                if (testCountry.country == nameCountry[0].toString()) {
+                    result1 = testCountry.currency
+                }
+            }
+            // Вторая страна
+            for (testCurrency in Country.values()) {
+                if (testCurrency.country == nameCountry[1].toString()) {
+                    result2 = testCurrency.currency
+                }
+            }
+            // true / false
+            if (result1 == result2) {
+                return true
+            }
+            return false
+        }
+    }
+}
+
+fun main() {
+    Country.nameCountry
+    println(Country.findCurrencyByCountry(nameCountry))
+}
